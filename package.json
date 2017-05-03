@@ -1,7 +1,7 @@
 {
   "name": "livi",
   "version": "0.0.1",
-  "description": "",
+  "description": "Tool for working with bash file for json arrays",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +13,19 @@
   "license": "MIT",
   "dependencies": {
     "yargs": "^7.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indatawetrust/livi.git"
+  },
+  "keywords": [
+    "json",
+    "array",
+    "bash"
+  ],
+  "bugs": {
+    "url": "https://github.com/indatawetrust/livi/issues"
+  },
+  "homepage": "https://github.com/indatawetrust/livi#readme"
 }
