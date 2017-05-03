@@ -6,6 +6,8 @@ const argv = require('yargs').argv,
 
 if (!argv.json || !argv.each) process.exit()
 
+let index = 1
+
 const replacer = (each, data) => {
   for (let _ of each.match(/#item(\.|[a-zA-Z0-9_\$])+/g)) {
     let keys = _.replace('#item.', '')
@@ -14,7 +16,7 @@ const replacer = (each, data) => {
                 .join('')
   
     _ = new RegExp(_.replace(/(\(|\)|\[|\]|\.|\*|\{|\}|\+|\?|\||\$)/g, "\\$1"))
-  
+    
     each = each.replace(new RegExp(_, 'g'), eval(`data${keys}`))
   }
   
@@ -25,13 +27,21 @@ const run = jobs => {
   
   let job = jobs.shift()
 
+  job = job.replace(/#index/g, index)
+
   const runner = job => exec(job, (error, stdout, stderr) => {
-    
+
+    index++   
+
     console.log(`pending jobs ~> ${jobs.length}`)    
     
     job = jobs.shift()
 
-    if (job) runner(job)
+    if (job) {    
+      job = job.replace(/#index/g, index)
+      
+      runner(job)
+    }
 
   })
 
