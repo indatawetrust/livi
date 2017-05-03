@@ -24,5 +24,5 @@ It is enough to write the keys #item and #item.name to access the array element
 
 test.sh
 ```bash
-echo #item._id.$oid #item.name
+echo #item.name
 ```
